@@ -30,30 +30,30 @@ class Module:
         return list(m.values())
 
     def train(self) -> None:
-        "Set the mode of this module and all descendent modules to `train`."
-        # TODO: Implement for Task 0.4.
-        raise NotImplementedError("Need to implement for Task 0.4")
+        self.training = True
+        for module in self.modules():
+            module.train()
 
     def eval(self) -> None:
-        "Set the mode of this module and all descendent modules to `eval`."
-        # TODO: Implement for Task 0.4.
-        raise NotImplementedError("Need to implement for Task 0.4")
+        self.training = False
+        for module in self.modules():
+            module.eval()
 
-    def named_parameters(self) -> Sequence[Tuple[str, Parameter]]:
+    def named_parameters(self, prefix: str = '') -> Sequence[Tuple[str, Parameter]]:
         """
         Collect all the parameters of this module and its descendents.
-
-
-        Returns:
-            The name and `Parameter` of each ancestor parameter.
         """
-        # TODO: Implement for Task 0.4.
-        raise NotImplementedError("Need to implement for Task 0.4")
+        # Parameters for the current module with their names.
+        named_params = [(prefix + name, param) for name, param in self._parameters.items()]
+
+        # Recursively collect parameters from all submodules.
+        for name, module in self._modules.items():
+            named_params.extend(module.named_parameters(prefix=prefix + name + '.'))
+        
+        return named_params
 
     def parameters(self) -> Sequence[Parameter]:
-        "Enumerate over all the parameters of this module and its descendents."
-        # TODO: Implement for Task 0.4.
-        raise NotImplementedError("Need to implement for Task 0.4")
+        return [p for _, p in self.named_parameters()]
 
     def add_parameter(self, k: str, v: Any) -> Parameter:
         """
@@ -69,6 +69,13 @@ class Module:
         val = Parameter(v, k)
         self.__dict__["_parameters"][k] = val
         return val
+    
+    # This method should be overridden by subclasses
+    def forward(self, *args: Any, **kwargs: Any) -> Any:
+        raise NotImplementedError("Forward method is not implemented")
+
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        return self.forward(*args, **kwargs)
 
     def __setattr__(self, key: str, val: Parameter) -> None:
         if isinstance(val, Parameter):
@@ -119,9 +126,9 @@ class Module:
 
 class Parameter:
     """
-    A Parameter is a special container stored in a :class:`Module`.
+    A Parameter is a special container stored in a `Module`.
 
-    It is designed to hold a :class:`Variable`, but we allow it to hold
+    It is designed to hold a `Variable`, but we allow it to hold
     any value for testing.
     """
 
