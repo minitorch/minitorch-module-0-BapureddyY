@@ -7,10 +7,7 @@
 
 * Overview: https://minitorch.github.io/module0.html
 
-<img src="C:\Users\MANIDEEP\github-classroom\minitorch\minitorch-module-0-BapureddyY\1.png" width="50%px">
-
-<img src="C:\Users\MANIDEEP\github-classroom\minitorch\minitorch-module-0-BapureddyY\2.png" width="50%px">
-
-<img src="C:\Users\MANIDEEP\github-classroom\minitorch\minitorch-module-0-BapureddyY\3.png" width="50%px">
-
-<img src="C:\Users\MANIDEEP\github-classroom\minitorch\minitorch-module-0-BapureddyY\4.png" width="50%px">
+<img src="https://raw.githubusercontent.com/BapureddyY/minitorch-module-0-BapureddyY/main/1.png" width="50%">
+<img src="https://raw.githubusercontent.com/BapureddyY/minitorch-module-0-BapureddyY/main/2.png" width="50%">
+<img src="https://raw.githubusercontent.com/BapureddyY/minitorch-module-0-BapureddyY/main/3.png" width="50%">
+<img src="https://raw.githubusercontent.com/BapureddyY/minitorch-module-0-BapureddyY/main/4.png" width="50%">
