@@ -6,7 +6,8 @@ from interface.train import render_train_interface
 from math_interface import render_math_sandbox
 from run_torch import TorchTrain
 
-from minitorch import operators,module
+from minitorch import operators, module
+
 parser = ArgumentParser()
 parser.add_argument("module_num", type=int)
 parser.add_argument(
@@ -117,3 +118,4 @@ PAGE_OPTIONS = list(PAGES.keys())
 page_selection = st.sidebar.radio("Pages", PAGE_OPTIONS)
 page = PAGES[page_selection]
 page()
+

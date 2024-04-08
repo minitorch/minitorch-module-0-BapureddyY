@@ -74,9 +74,6 @@ class Module:
     def forward(self, *args: Any, **kwargs: Any) -> Any:
         raise NotImplementedError("Forward method is not implemented")
 
-    def __call__(self, *args: Any, **kwargs: Any) -> Any:
-        return self.forward(*args, **kwargs)
-
     def __setattr__(self, key: str, val: Parameter) -> None:
         if isinstance(val, Parameter):
             self.__dict__["_parameters"][key] = val
